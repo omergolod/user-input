@@ -1,5 +1,9 @@
 pipeline {     
-    agent any
+    agent {
+        docker { 
+            image 'python:3.10-slim' 
+        }
+    }
         
     environment {
         PYENV_HOME = "${WORKSPACE}/welcome/app/flask-volt-dashboard/.pyenv"
@@ -11,7 +15,8 @@ pipeline {
     stages {
         stage('Clone Flask Project') {
             steps {
-   git branch: 'jenkins-workshop', url: 'https://github.com/yanivomc/devopshift-welcome.git'            }
+                git branch: 'jenkins-workshop', url: 'https://github.com'
+            }
         }
 
         stage('Setup Python Environment and Install Dependencies') {
@@ -20,11 +25,9 @@ pipeline {
                     script {
                         sh '''
                             rm -rf .pyenv
-                            virtualenv .pyenv
+                            python3 -m venv .pyenv
                             . .pyenv/bin/activate
                             pip install --upgrade pip
-                            pip install setuptools
-                            pip install legacy-cgi
                             pip install -r requirements.txt
                         '''
                     }
