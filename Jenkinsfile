@@ -11,7 +11,7 @@
     stages {
         stage('Clone Flask Project') {
             steps {
-                git branch: 'jenkins-workshop', url: 'https://github.com/yanivomc/devopshift-welcome.git'
+                git branch: 'jenkins-workshop', url: 'https://github.com'
             }
         }
 
@@ -83,4 +83,3 @@
         }
     }
 }
-
