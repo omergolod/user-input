@@ -12,7 +12,8 @@ pipeline {
         stage('Clone Flask Project') {
             steps {
                 git branch: 'jenkins-workshop', url: 'https://github.com/yanivomc/devopshift-welcome.git'
-                echo 'clone repository is done'
+                echo 'clone repository is done workspace is ${env.WORKSPACE}'
+                
             }
         }
 
