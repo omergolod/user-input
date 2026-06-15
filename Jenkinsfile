@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Clone Flask Project') {
             steps {
-                git branch: 'jenkins-workshop', url: 'https://github.com/yanivomc/devopshift-welcome.git'
+                git branch: 'jenkins-workshop', url: 'https://github.com'
             }
         }
 
@@ -26,11 +26,12 @@ pipeline {
                             pip install --upgrade pip
                             pip install setuptools
                             
-                            # Install the fixed Python 3.13 fork of the html-minimizer
+                            # Install fixed Python 3.13 fork of htmlmin
                             pip install htmlmin2
                             
-                            # Remove the crashing old htmlmin dependency from requirements.txt line before installing
+                            # Remove the crashing old htmlmin and rewrite SQLAlchemy version for Python 3.13 support
                             sed -i '/Flask-Minify/d' requirements.txt
+                            sed -i 's/sqlalchemy==2.0.21/sqlalchemy==2.0.35/g' requirements.txt
                             
                             # Install the rest of the dependencies safely
                             pip install -r requirements.txt
