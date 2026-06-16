@@ -38,6 +38,7 @@ pipeline {
                             # Install the rest of the dependencies safely
                             pip install -r requirements.txt
                             pip install Flask-Minify==0.37 --no-deps
+                            pip install xxhash
                         '''
                     }
                 }
