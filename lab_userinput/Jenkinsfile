@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Run Application') {
             steps {
-                echo 'Starting Flask application
+                echo 'Starting Flask application'
                 script (
                     sh '''
                     echo "dummy log content" > flask_app.log
