@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Wait for user interaction and store the result
-                    def userInput = input message: 'Is the application running successfully?',
+                    def userInput = input message: 'QA team Is the application running successfully?',
                                          parameters: [choice(name: 'Proceed', choices: 'Proceed\nAbort', description: 'Choose an option')]
                     // Set a variable based on user input
                     env.USER_CHOICE = userInput
