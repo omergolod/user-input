@@ -12,8 +12,8 @@ pipeline {
                 echo 'Starting Flask application'
                 script {
                     sh '''
-                    echo "dummy log content" > ("${PROJECT_HOME}")/flask_app.log
-                    cat ("${PROJECT_HOME}")/flask_app.log
+                    echo "dummy log content" > ${PROJECT_HOME}/flask_app.log
+                    cat ${PROJECT_HOME}/flask_app.log
                     '''
                  }
             }
