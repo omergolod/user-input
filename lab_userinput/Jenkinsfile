@@ -10,11 +10,11 @@ pipeline {
         stage('Run Application') {
             steps {
                 echo 'Starting Flask application'
-                script (
+                script {
                     sh '''
                     echo "dummy log content" > flask_app.log
                     '''
-                    )
+                 }
             }
         }
 
