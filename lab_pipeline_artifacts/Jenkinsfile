@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PROJECT_HOME = "${WORKSPACE}/artifacts"
+        PROJECT_HOME = "${WORKSPACE}"
     }
     stages {
         stage('Run Application') {
@@ -9,7 +9,6 @@ pipeline {
                 echo 'Starting Flask application'
                 script {
                     sh '''
-                    mkdir ${PROJECT_HOME}
                     echo "dummy log content" > ${PROJECT_HOME}/flask_app.log
                     cat ${PROJECT_HOME}/flask_app.log
                     '''
